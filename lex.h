@@ -1,0 +1,66 @@
+#ifndef LEX_H_
+#define LEX_H_
+
+typedef enum {
+	TOKEN_PLUS, /*0*/
+	TOKEN_MINUS,
+	TOKEN_SLASH,
+	TOKEN_ASTERIK,
+	TOKEN_ID,
+	TOKEN_DOUBLE,
+	TOKEN_DECL_STRING,
+	TOKEN_STRING,
+	TOKEN_LPARENTH,
+	TOKEN_RPARENTH,
+	TOKEN_LBRACE,/*10*/
+	TOKEN_RBRACE,
+	TOKEN_COMMA,
+	TOKEN_EQUALITY,
+	TOKEN_EQ,
+	TOKEN_NE,
+	TOKEN_LT,
+	TOKEN_LE,
+	TOKEN_GT,
+	TOKEN_GE,
+	TOKEN_NOT,/*20*/	
+	TOKEN_OR,
+	TOKEN_AND,
+	TOKEN_FUNCTION,
+	TOKEN_RETURN,
+	TOKEN_IF,
+	TOKEN_ELSE,
+	TOKEN_FOR,	
+	TOKEN_WHILE,
+	TOKEN_BREAK,
+	TOKEN_CONTINUE, /* 30*/	
+	TOKEN_LOCAL,
+	TOKEN_SEMICOLON,
+	TOKEN_UNKNOWN,
+	TOKEN_LBRACKET,
+	TOKEN_RBRACKET,
+	TOKEN_ARRAY,
+	TOKEN_DIGIT,
+	TOKEN_CARET,
+	TOKEN_INCLUDE,
+	TOKEN_EOL,
+	TOKEN_EOF
+} token_t;
+
+struct lex {
+	token_t		token;
+	union {
+		char	*id;
+		double	real;
+		char	*string;
+	};
+};
+
+extern struct lex lex;
+
+void
+set_file(FILE *file);
+
+token_t
+get_next_token(void);
+
+#endif /*LEX_H_*/
