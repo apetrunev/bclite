@@ -1,0 +1,48 @@
+# RK4
+t0 = 0.0
+tn = 5.0
+h  = 0.05
+y0 = 1
+
+function f(t,y) {
+	return exp(t)
+}
+
+function solve(t) {
+	return exp(t)
+}    
+
+len = (tn - t0) / h 
+y = vector(len)
+t = vector(len)
+dy = vector(len)
+
+
+for (i = 0; i < len; i = i + 1) {
+	k1 = h*f(t0, y0)
+	k2 = h*f(t0 + 0.5*h, y0 + 0.5*k1)
+	k3 = h*f(t0 + 0.5*h, y0 + 0.5*k2)
+	k4 = h*f(t0 + h, y0 + k3)
+        
+	yn = y0 + 1/6*(k1 + 2*k2 + 2*k3 + k4)
+	
+	s = solve(t0)
+
+        t0 = t0 + h
+	y0 = yn 
+ 
+        dy[i] = yn
+   	y[i]  = s
+	t[i]  = t0  
+}
+
+"t"
+t
+"_"
+"dy"
+dy
+"_"
+"y"
+y
+"_"
+

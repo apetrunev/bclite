@@ -1,0 +1,15 @@
+function length(A, B) {
+	local len, xA, yA, xB, yB
+
+	xA = A[0]
+	yA = A[1]
+	
+	xB = B[0]
+	yB = B[1]
+	
+	len = sqrt((xB - xA)^2 + (yB - yA)^2)
+	
+	return len
+}
+
+length([1, 1], [1, 1])
